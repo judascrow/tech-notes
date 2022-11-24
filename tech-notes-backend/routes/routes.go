@@ -2,7 +2,6 @@ package routes
 
 import (
 	"tech-notes-backend/controllers"
-	"tech-notes-backend/middlewares"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -18,7 +17,7 @@ func SetupRoutes(app *fiber.App) {
 	roles.Get("", controllers.GetAllRoles)
 
 	users := apiv1.Group("/users")
-	users.Get("", middlewares.Protected(), controllers.GetAllUsers)
+	users.Get("", controllers.GetAllUsers)
 	users.Post("", controllers.CreateUser)
 
 	notes := apiv1.Group("/notes")
